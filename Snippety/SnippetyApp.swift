@@ -9,12 +9,20 @@ import SwiftUI
 
 @main
 struct SnippetyApp: App {
+    @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .onAppear {
+                     NSWindow.allowsAutomaticWindowTabbing = false
+                 }
         }
+        .windowStyle(.hiddenTitleBar)
         .commands {
-            SidebarCommands() // 1
+            SidebarCommands()
+            CommandGroup(replacing: .newItem) { }
+            CommandGroup(replacing: .undoRedo) { }
+            CommandGroup(replacing: .pasteboard) { }
         }
     }
 }

@@ -14,6 +14,8 @@
 		27F36FC129287B060061E26B /* SnippetyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F36FC029287B060061E26B /* SnippetyTests.swift */; };
 		27F36FCB29287B060061E26B /* SnippetyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F36FCA29287B060061E26B /* SnippetyUITests.swift */; };
 		27F36FCD29287B060061E26B /* SnippetyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F36FCC29287B060061E26B /* SnippetyUITestsLaunchTests.swift */; };
+		27F36FDA29288CA90061E26B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F36FD929288CA90061E26B /* AppDelegate.swift */; };
+		27F36FDD292959EA0061E26B /* FoldersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F36FDC292959EA0061E26B /* FoldersView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +47,8 @@
 		27F36FC629287B060061E26B /* SnippetyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SnippetyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		27F36FCA29287B060061E26B /* SnippetyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnippetyUITests.swift; sourceTree = "<group>"; };
 		27F36FCC29287B060061E26B /* SnippetyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnippetyUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		27F36FD929288CA90061E26B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		27F36FDC292959EA0061E26B /* FoldersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoldersView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,8 +99,9 @@
 		27F36FAD29287B050061E26B /* Snippety */ = {
 			isa = PBXGroup;
 			children = (
+				27F36FDB292959D20061E26B /* Views */,
 				27F36FAE29287B050061E26B /* SnippetyApp.swift */,
-				27F36FB029287B050061E26B /* ContentView.swift */,
+				27F36FD929288CA90061E26B /* AppDelegate.swift */,
 				27F36FB229287B060061E26B /* Assets.xcassets */,
 				27F36FB729287B060061E26B /* Snippety.entitlements */,
 				27F36FB429287B060061E26B /* Preview Content */,
@@ -129,6 +134,15 @@
 			path = SnippetyUITests;
 			sourceTree = "<group>";
 		};
+		27F36FDB292959D20061E26B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				27F36FB029287B050061E26B /* ContentView.swift */,
+				27F36FDC292959EA0061E26B /* FoldersView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -139,6 +153,7 @@
 				27F36FA729287B050061E26B /* Sources */,
 				27F36FA829287B050061E26B /* Frameworks */,
 				27F36FA929287B050061E26B /* Resources */,
+				27F36FDF29297E410061E26B /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -254,12 +269,36 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		27F36FDF29297E410061E26B /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		27F36FA729287B050061E26B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27F36FDA29288CA90061E26B /* AppDelegate.swift in Sources */,
 				27F36FB129287B050061E26B /* ContentView.swift in Sources */,
+				27F36FDD292959EA0061E26B /* FoldersView.swift in Sources */,
 				27F36FAF29287B050061E26B /* SnippetyApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
