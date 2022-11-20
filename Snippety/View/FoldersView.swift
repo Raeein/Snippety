@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FoldersView: View {
-    @Binding var selection: String?
+    @Binding var selection: Folder?
     let favouritesFolder: [String] = ["Me", "You"]
     let normalFolder = [
         "Message",
@@ -21,14 +21,17 @@ struct FoldersView: View {
     ]
 
     var body: some View {
-
-        List(selection: $selection) {
-            Section("TODAY") {
-                ForEach(normalFolder, id: \.self) { type in
-                    Text(type)
-                }
+        
+        List(Folder.items, id: \.self, children: \.children, selection: $selection) { item in
+            HStack(spacing: 6) {
+                #warning("add color changing")
+                Image(systemName: item.icon)
+                    .foregroundColor(.blue)
+                    .imageScale(.medium)
+                Text(item.name)
             }
-        }
+          }
+        .animation(.easeIn, value: 0.2)
         .listStyle(.sidebar)
         .frame(minWidth: 180)
         .toolbar {
@@ -38,8 +41,6 @@ struct FoldersView: View {
                 })
             }
         }
-        Spacer()
-        Image(systemName: "gearshape")
     }
     private func toggleSidebar() {
         NSApp.keyWindow?.firstResponder?.tryToPerform(#selector(NSSplitViewController.toggleSidebar(_:)), with: nil)
@@ -48,6 +49,6 @@ struct FoldersView: View {
 
 struct FoldersView_Previews: PreviewProvider {
     static var previews: some View {
-        FoldersView(selection: .constant("Me"))
+        FoldersView(selection: .constant(nil))
     }
 }

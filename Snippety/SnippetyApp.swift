@@ -12,10 +12,15 @@ struct SnippetyApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     var body: some Scene {
         WindowGroup {
-            ContentView()
+
+            #if os(macOS)
+           ContentView()
                 .onAppear {
                      NSWindow.allowsAutomaticWindowTabbing = false
                  }
+           #else
+           ContentView()
+           #endif
         }
         .windowStyle(.hiddenTitleBar)
         .commands {
@@ -24,5 +29,6 @@ struct SnippetyApp: App {
             CommandGroup(replacing: .undoRedo) { }
             CommandGroup(replacing: .pasteboard) { }
         }
+        Settings(content: SettingsView.init)
     }
 }
